@@ -1,0 +1,1 @@
+Considerazioni sulle rotazioni del subreflettore di Medicina.

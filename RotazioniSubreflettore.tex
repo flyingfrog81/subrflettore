@@ -1,0 +1,483 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{RotazioniSubreflettore}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}187}]:} \PY{o}{\PYZpc{}}\PY{k}{pylab} \PY{n}{inline}
+          \PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{o}{*}
+          \PY{k+kn}{from} \PY{n+nn}{IPython.display} \PY{k+kn}{import} \PY{n}{Image}
+          \PY{n}{init\PYZus{}printing}\PY{p}{(}\PY{n}{use\PYZus{}latex}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{mathjax}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Populating the interactive namespace from numpy and matplotlib
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+WARNING: pylab import has clobbered these variables: ['prod', 'Circle', 'power', 'diag', 'sinh', 'trunc', 'binomial', 'plot', 'eye', 'det', 'tan', 'product', 'roots', 'vectorize', 'sin', 'plotting', 'zeros', 'cosh', 'conjugate', 'take', 'solve', 'trace', 'beta', 'ones', 'transpose', 'cos', 'interactive', 'diff', 'invert', 'tanh', 'Polygon', 'reshape', 'sqrt', 'floor', 'source', 'add', 'multinomial', 'test', 'poly', 'mod', 'sign', 'gamma', 'log', 'var', 'seterr', 'flatten', 'nan', 'pi', 'exp']
+`\%matplotlib` prevents importing * from pylab and numpy
+    \end{Verbatim}
+
+
+    \section{Rotazione del subreflettore intorno al fuoco}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}188}]:} \PY{n}{Image}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{files/rot\PYZus{}sub.png}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}188}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{RotazioniSubreflettore_files/RotazioniSubreflettore_2_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}188}]:} 
+\end{Verbatim}
+
+    Sia dato il sistema descritto il figura in cui: * \textbf{O} rappresenta
+il centro del subriflettore in posizione 0 * \textbf{F} rappresenta il
+fulcro del parboloide * \textbf{D} è la distanza tra il subriflettore e
+il fuoco nella posizione 0 * \$ \theta = \widehat{OFP}\$ , angolo di
+tilt del subriflettore necessario ad inquadrare un feed in vertex *
+\(|FO| = |FP| = \textbf{D}\)
+
+Vogliamo trovare le compensazioni \textbf{Z} e \textbf{X} da applicare
+al movimento del subriflettore per mantenerlo centrato sull'asse di
+fuoco senza introdurre errori di puntamento.
+
+    Essendo il triangolo \(OFP\) isoscele abbiamo che:
+\[ \alpha = \frac{\pi - \theta}{2} = \frac{\pi}{2} - \frac{\theta}{2} \]
+
+    da cui possiamo ricavare l'ampiezza dell'angolo \(\beta\):
+\[ \beta = \frac{\pi}{2} - \alpha = \frac{\pi}{2} - \frac{\pi}{2} + \frac{\theta}{2} = \frac{\theta}{2} \]
+
+    Possiamo quindi calcolare \textbf{X} e \textbf{Z} sapendo che:
+\[ |PO| = 2 * (D * \sin{\frac{\theta}{2}}) \] E sfruttando il fatto che
+\(PBO\) è rettangolo in \(B\):
+\[ X = |PO| * \cos{\beta} = 2 * D * \sin{\frac{\theta}{2}} * \cos{\frac{\theta}{2}} = D* \sin{\theta} \]
+\[ Z = |PO| * \sin{\beta} = 2 * D * \sin{\frac{\theta}{2}} * \sin{\frac{\theta}{2}} = 2 * D * (\sin{\frac{\theta}{2}})^2\]
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}189}]:} \PY{n}{d}\PY{p}{,} \PY{n}{t}\PY{p}{,} \PY{n}{z}\PY{p}{,} \PY{n}{x} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{D theta z x}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{z} \PY{o}{=} \PY{l+m+mi}{2} \PY{o}{*} \PY{n}{d} \PY{o}{*} \PY{p}{(}\PY{n}{sin}\PY{p}{(}\PY{n}{t}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}
+          \PY{n}{x} \PY{o}{=} \PY{n}{d} \PY{o}{*} \PY{n}{sin}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+\end{Verbatim}
+
+    Sapendo che \$ D = 310.7mm \$ calcolato geometricamente per il
+subreflettore possiamo calcolare il variare di \textbf{X} e \textbf{Z}
+al variare dell'angolo in vertex
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}190}]:} \PY{n}{xaxis} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{radians}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}
+          \PY{n}{xaxis\PYZus{}labels} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}
+          \PY{n}{z\PYZus{}at\PYZus{}fixed\PYZus{}d} \PY{o}{=} \PY{l+m+mi}{2} \PY{o}{*} \PY{l+m+mf}{310.7} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{xaxis}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+          \PY{n}{x\PYZus{}at\PYZus{}fixed\PYZus{}d} \PY{o}{=} \PY{l+m+mf}{310.7} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{xaxis}\PY{p}{)}
+          \PY{c}{\PYZsh{}z\PYZus{}at\PYZus{}fixed\PYZus{}d = array([N(z.subs(D, 310.7).subs(t, \PYZus{}theta)) for \PYZus{}theta in xaxis])}
+          \PY{c}{\PYZsh{}x\PYZus{}at\PYZus{}fixed\PYZus{}d = array([N(x.subs(D, 310.7).subs(t, \PYZus{}theta)) for \PYZus{}theta in xaxis])}
+\end{Verbatim}
+
+    Dai plot seguenti vediamo come nella posizione 0 del sureflettore una
+rotazione di un angolo \(\theta\) attorno al fuoco rappresenti una
+piccola correzione in Z e una più consistente correzione in X
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}191}]:} \PY{n}{pylab}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Z correction at D = 310.7}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Theta deg.}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Z mm}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{n+nb+bp}{True}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xaxis\PYZus{}labels}\PY{p}{,} \PY{n}{z\PYZus{}at\PYZus{}fixed\PYZus{}d}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} 
+                     \PY{n}{xaxis\PYZus{}labels}\PY{p}{[}\PY{l+m+mi}{500}\PY{p}{]}\PY{p}{,} \PY{n}{z\PYZus{}at\PYZus{}fixed\PYZus{}d}\PY{p}{[}\PY{l+m+mi}{500}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{bo}\PY{l+s}{\PYZsq{}}\PY{p}{,} 
+                     \PY{n}{markersize} \PY{o}{=} \PY{l+m+mi}{12}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}191}]:} [<matplotlib.lines.Line2D at 0xee374d0>,
+           <matplotlib.lines.Line2D at 0xee37750>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{RotazioniSubreflettore_files/RotazioniSubreflettore_12_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}192}]:} \PY{n}{pylab}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{X correction at D = 310.7}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Theta deg.}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{X mm}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{n+nb+bp}{True}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xaxis\PYZus{}labels}\PY{p}{,} \PY{n}{x\PYZus{}at\PYZus{}fixed\PYZus{}d}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{g\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} 
+                     \PY{n}{xaxis\PYZus{}labels}\PY{p}{[}\PY{l+m+mi}{500}\PY{p}{]}\PY{p}{,} \PY{n}{x\PYZus{}at\PYZus{}fixed\PYZus{}d}\PY{p}{[}\PY{l+m+mi}{500}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{go}\PY{l+s}{\PYZsq{}}\PY{p}{,} 
+                     \PY{n}{markersize} \PY{o}{=} \PY{l+m+mi}{12}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}192}]:} [<matplotlib.lines.Line2D at 0xf074ad0>,
+           <matplotlib.lines.Line2D at 0xf074d50>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{RotazioniSubreflettore_files/RotazioniSubreflettore_13_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Presupponiamo ora di inquadrare un ricevitore con un angolo di
+\(\theta = 4^{\circ}\) e di voler effettuare un focheggiamento muovendo
+il subreflettore verso il ricevitore di una quantità che facciamo
+variare tra 0 e 18cm, calcolati come \$ 3\lambda  @ 5 GHz\$ . Anche in
+questo caso possiamo controllare il variare delle correzioni applicate
+in \textbf{Z} e \textbf{X} al variare della distanza del subreflettore
+dal fuoco.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}193}]:} \PY{n}{xaxis} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{180}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}
+          \PY{n}{z\PYZus{}at\PYZus{}fixed\PYZus{}t} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{N}\PY{p}{(}\PY{n}{z}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{t}\PY{p}{,} \PY{n}{radians}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{D}\PY{p}{,} \PY{n}{\PYZus{}d}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{\PYZus{}d} \PY{o+ow}{in} \PY{n}{xaxis}\PY{p}{]}\PY{p}{)}
+          \PY{n}{x\PYZus{}at\PYZus{}fixed\PYZus{}t} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{N}\PY{p}{(}\PY{n}{x}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{t}\PY{p}{,} \PY{n}{radians}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{D}\PY{p}{,} \PY{n}{\PYZus{}d}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{\PYZus{}d} \PY{o+ow}{in} \PY{n}{xaxis}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}194}]:} \PY{n}{pylab}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Z correction at theta = 4 deg.}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{D mm}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Z mm}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{n+nb+bp}{True}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xaxis}\PY{p}{,} \PY{n}{z\PYZus{}at\PYZus{}fixed\PYZus{}t}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}194}]:} [<matplotlib.lines.Line2D at 0xf2de290>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{RotazioniSubreflettore_files/RotazioniSubreflettore_16_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}195}]:} \PY{n}{pylab}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{X correction at theta = 4 deg.}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{D mm}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{X mm}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{n+nb+bp}{True}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xaxis}\PY{p}{,} \PY{n}{x\PYZus{}at\PYZus{}fixed\PYZus{}t}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{g\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}195}]:} [<matplotlib.lines.Line2D at 0xf364cd0>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{RotazioniSubreflettore_files/RotazioniSubreflettore_17_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    \section{Tilt del subreflettore}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}196}]:} \PY{n}{Image}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{files/tilt\PYZus{}sub2.png}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}196}]:}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{RotazioniSubreflettore_files/RotazioniSubreflettore_19_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    Sia dato il sistema in figura in cui: * \(AB\) è un lato del triangolo
+subreflettore (vista B in Fig. 3.1.2 pag. 90 ``Matematica di sistema'' 4
+di 4) * \(|AB| = 2068mm\) * \(\varphi\) è l'angolo di cui vgliamo
+ruotare attorno al suo asse il subreflettore * \(BC\) rappresenta il
+posizionamento del subreflettore una volta compiuta la rotazione
+
+    \textbf{NOTA}: \emph{Per semplicità consideriamo il caso di rotazione
+sull'asse X applicando un angolo \(\theta_y\) che si riflette sul solo
+movimento di due attuatori. In questo caso sto solo cercando di
+quantificare un possibile errore, in realtà B si dovrebbe muovere verso
+l'alto mentre A verso il basso, in questo caso direi che quello che ci
+interessa è la differenza tra i due. }
+
+    Ragionando sui triangoli e sfruttando il fatto che \(|AB| = |BC|\)
+possiamo desumere che: * \(\omega = \Omega\) perchè alterni-interni
+\[ \Omega = \omega = \frac{\pi - \varphi}{2} = \frac{\pi}{2} - \frac{\varphi}{2} \]
+\[ \sin{\Omega} = \sin{\omega} = \cos{\frac{\varphi}{2}} \]
+\[ \cos{\Omega} = \cos{\omega} = \sin{\frac{\varphi}{2}} \]
+
+    Ragionando a questo punto sui lati otteniamo che:
+
+    \[ |AC| = 2*|AB|*\sin(\frac{\varphi}{2}) \]
+\[ |AE| = |AC| * \sin{\omega} = 2*|AB|*\sin{\frac{\varphi}{2}} * \cos{\frac{\varphi}{2}} = 2*|AB|*\frac{\sin{\varphi}}{2} = |AB|*\sin{\varphi}\]
+\[ |EC| = |AC| * \cos{\omega} = 2*|AB|*\sin{\frac{\varphi}{2}} * \sin{\frac{\varphi}{2}}  = 2*|AB|*(\sin{\frac{\varphi}{2}})^2 = |AB|*(1 - \cos{\varphi}) \]
+\[ |ED| = |EC| * \tan{\varphi} = |AB|* \tan{\varphi} - |AB|*\cos{\varphi}*\frac{\sin{\varphi}}{\cos{\varphi}} = |AB| * (\tan{\varphi} - \sin{\varphi})\]
+\[ |AD| = |AB| * \tan{\varphi} \]
+
+    Que e ci interessa è che quindi quando noi vogliamo comandare un tilt di
+\(\varphi\) e diamo come posizione comandata \(|AD|\) in realtà dovremmo
+dare un valore di \(|AC|\) , per cui:
+\[ |AD| - |AC| = |AB| * \tan{\varphi} - 2*|AB|*\sin{\frac{\varphi}{2}} = |AB|*(\tan{\varphi} - 2*\sin{\frac{\varphi}{2}}) \]
+
+    Fissanso quindi come da ipotesi \(|AB| = 2098mm\) calcoliamo l'errore al
+variare di \(\varphi\):
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}199}]:} \PY{n}{xaxis} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{radians}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}
+          \PY{n}{xaxis\PYZus{}labels} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{1000}\PY{p}{)}
+          \PY{n}{error} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{2098}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{tan}\PY{p}{(}\PY{n}{xaxis}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{xaxis}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}201}]:} \PY{n}{pylab}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Correzione attuatore vs. angolo di tilt}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Phi deg.}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Error mm}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{n+nb+bp}{True}\PY{p}{)}
+          \PY{n}{pylab}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xaxis\PYZus{}labels}\PY{p}{,} \PY{n}{error}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} 
+                     \PY{n}{xaxis\PYZus{}labels}\PY{p}{[}\PY{l+m+mi}{500}\PY{p}{]}\PY{p}{,} \PY{n}{error}\PY{p}{[}\PY{l+m+mi}{500}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{bo}\PY{l+s}{\PYZsq{}}\PY{p}{,} 
+                     \PY{n}{markersize} \PY{o}{=} \PY{l+m+mi}{12}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}201}]:} [<matplotlib.lines.Line2D at 0xfa16310>,
+           <matplotlib.lines.Line2D at 0xfa16590>]
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{RotazioniSubreflettore_files/RotazioniSubreflettore_28_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}}]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
